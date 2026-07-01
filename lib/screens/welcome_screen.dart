@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -11,21 +10,44 @@ class WelcomeScreen extends StatelessWidget {
       body: SafeArea(
         child: Stack(
           children: [
+            /// Bottom Farming Illustration
+            Positioned(
+              bottom: -30,
+              left: 0,
+              right: 0,
+              child: Opacity(
+                opacity: 0.95,
+                child: Image.asset(
+                  'assets/images/farming.png',
+                  height: 300,
+                  fit: BoxFit.contain,
+                ),
+              ),
+            ),
+
             /// Main Content
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
+              padding: const EdgeInsets.symmetric(horizontal: 30),
               child: Column(
                 children: [
                   const Spacer(),
 
-                  /// Lottie Animation
-                  Lottie.asset(
-                    'assets/lottie/farming.json',
-                    height: 220,
-                    repeat: true,
+                  /// App Logo
+                  Container(
+                    height: 120,
+                    width: 120,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF4CAF50).withOpacity(0.15),
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.agriculture,
+                      size: 70,
+                      color: Color(0xFF4CAF50),
+                    ),
                   ),
 
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 25),
 
                   /// App Name
                   const Text(
@@ -34,35 +56,39 @@ class WelcomeScreen extends StatelessWidget {
                       fontSize: 36,
                       fontWeight: FontWeight.bold,
                       color: Color(0xFF4CAF50),
+                      letterSpacing: 1,
                     ),
                   ),
 
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 12),
 
-                  /// Tagline
+                  /// Subtitle
                   const Text(
-                    "Connecting Farmers Directly to Markets",
+                    "Connecting Farmers Directly to Buyers\nfor Better Profits",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 17,
                       color: Colors.white70,
+                      height: 1.5,
                     ),
                   ),
 
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 45),
 
                   /// Get Started Button
                   SizedBox(
                     width: double.infinity,
-                    height: 55,
+                    height: 56,
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.pushNamed(context, '/role');
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF4CAF50),
+                        elevation: 8,
+                        shadowColor: Colors.green,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
+                          borderRadius: BorderRadius.circular(16),
                         ),
                       ),
                       child: const Text(
@@ -97,26 +123,14 @@ class WelcomeScreen extends StatelessWidget {
                               color: Color(0xFF4CAF50),
                               fontWeight: FontWeight.bold,
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
                   ),
 
-                  const Spacer(flex: 2),
+                  const SizedBox(height: 170),
                 ],
-              ),
-            ),
-
-            /// Bottom Image
-            Positioned(
-              bottom: -20,
-              left: 0,
-              right: 0,
-              child: Image.asset(
-                'assets/images/farm_land.png',
-                height: 260,
-                fit: BoxFit.cover,
               ),
             ),
           ],
