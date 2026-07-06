@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'screens/welcome_screen.dart';
 import 'screens/role_screen.dart';
 import 'screens/login_screen.dart';
+import 'screens/home_screen.dart';
+import 'navigation/bottom_nav_screen.dart';
 
 void main() {
   runApp(const FarmDirectApp());
@@ -23,7 +25,7 @@ class FarmDirectApp extends StatelessWidget {
       ),
 
       // First screen
-      home: const WelcomeScreen(),
+      home: const BottomNavScreen(),
 
       // Named routes
       routes: {
