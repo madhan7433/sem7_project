@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import '../constants/colors.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -8,185 +11,276 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  bool obscurePassword = true;
-
-  final TextEditingController phoneController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController mobileController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF121212),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(25),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+      body: Container(
+        width: double.infinity,
+        decoration: const BoxDecoration(
+          gradient: AppColors.backgroundGradient,
+        ),
+        child: SafeArea(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 28),
+            child: Column(
+              children: [
 
-              const SizedBox(height: 30),
+                const SizedBox(height: 25),
 
-              const Center(
-                child: Icon(
-                  Icons.agriculture,
-                  size: 90,
-                  color: Color(0xFF4CAF50),
-                ),
-              ),
-
-              const SizedBox(height: 25),
-
-              const Center(
-                child: Text(
-                  "Welcome Back",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: IconButton(
+                    onPressed: () => Navigator.pop(context),
+                    icon: const Icon(
+                      Icons.arrow_back_ios_new,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
-              ),
 
-              const SizedBox(height: 10),
+                const SizedBox(height: 10),
 
-              const Center(
-                child: Text(
-                  "Login to continue",
-                  style: TextStyle(
+                Container(
+                  width: 95,
+                  height: 95,
+                  decoration: BoxDecoration(
+                    gradient: AppColors.primaryGradient,
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.primary.withOpacity(.35),
+                        blurRadius: 25,
+                      )
+                    ],
+                  ),
+                  child: const Icon(
+                    Icons.eco_rounded,
+                    color: Colors.white,
+                    size: 50,
+                  ),
+                ),
+
+                const SizedBox(height: 30),
+
+                Text(
+                  "Welcome to",
+                  style: GoogleFonts.poppins(
+                    color: Colors.white70,
+                    fontSize: 18,
+                  ),
+                ),
+
+                const SizedBox(height: 5),
+
+                Text(
+                  "VIDHAI",
+                  style: GoogleFonts.outfit(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 40,
+                    letterSpacing: 3,
+                  ),
+                ),
+
+                const SizedBox(height: 15),
+
+                Text(
+                  "Continue with your mobile number",
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.poppins(
                     color: Colors.white70,
                     fontSize: 16,
                   ),
                 ),
-              ),
 
-              const SizedBox(height: 40),
+                const SizedBox(height: 45),
 
-              const Text(
-                "Phone Number",
-                style: TextStyle(color: Colors.white),
-              ),
-
-              const SizedBox(height: 10),
-
-              TextField(
-                controller: phoneController,
-                keyboardType: TextInputType.phone,
-                style: const TextStyle(color: Colors.white),
-                decoration: InputDecoration(
-                  hintText: "Enter phone number",
-                  hintStyle: const TextStyle(color: Colors.white38),
-                  filled: true,
-                  fillColor: const Color(0xFF1E1E1E),
-                  prefixIcon:
-                      const Icon(Icons.phone, color: Color(0xFF4CAF50)),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide.none,
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 18,
+                    vertical: 6,
                   ),
-                ),
-              ),
-
-              const SizedBox(height: 25),
-
-              const Text(
-                "Password",
-                style: TextStyle(color: Colors.white),
-              ),
-
-              const SizedBox(height: 10),
-
-              TextField(
-                controller: passwordController,
-                obscureText: obscurePassword,
-                style: const TextStyle(color: Colors.white),
-                decoration: InputDecoration(
-                  hintText: "Enter password",
-                  hintStyle: const TextStyle(color: Colors.white38),
-                  filled: true,
-                  fillColor: const Color(0xFF1E1E1E),
-                  prefixIcon:
-                      const Icon(Icons.lock, color: Color(0xFF4CAF50)),
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      obscurePassword
-                          ? Icons.visibility_off
-                          : Icons.visibility,
-                      color: Colors.white70,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        obscurePassword = !obscurePassword;
-                      });
-                    },
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide.none,
-                  ),
-                ),
-              ),
-
-              const SizedBox(height: 15),
-
-              Align(
-                alignment: Alignment.centerRight,
-                child: TextButton(
-                  onPressed: () {},
-                  child: const Text(
-                    "Forgot Password?",
-                    style: TextStyle(
-                      color: Color(0xFF4CAF50),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(.06),
+                    borderRadius: BorderRadius.circular(18),
+                    border: Border.all(
+                      color: Colors.white12,
                     ),
                   ),
+                  child: Row(
+                    children: [
+
+                      Text(
+                        "+91",
+                        style: GoogleFonts.poppins(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
+                      ),
+
+                      const SizedBox(width: 15),
+
+                      Container(
+                        width: 1,
+                        height: 28,
+                        color: Colors.white24,
+                      ),
+
+                      const SizedBox(width: 15),
+
+                      Expanded(
+                        child: TextField(
+                          controller: mobileController,
+                          keyboardType: TextInputType.phone,
+                          maxLength: 10,
+                          style: GoogleFonts.poppins(
+                            color: Colors.white,
+                          ),
+                          decoration: InputDecoration(
+                            counterText: "",
+                            border: InputBorder.none,
+                            hintText: "Enter Mobile Number",
+                            hintStyle: GoogleFonts.poppins(
+                              color: Colors.white38,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
+                                const SizedBox(height: 25),
 
-              const SizedBox(height: 10),
-
-              SizedBox(
-                width: double.infinity,
-                height: 55,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(context, "/home");
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF4CAF50),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
+                Container(
+                  padding: const EdgeInsets.all(18),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(.05),
+                    borderRadius: BorderRadius.circular(18),
+                    border: Border.all(
+                      color: Colors.white10,
                     ),
                   ),
-                  child: const Text(
-                    "Login",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                    ),
+                  child: Row(
+                    children: [
+                      const Icon(
+                        Icons.sms_outlined,
+                        color: AppColors.secondary,
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Text(
+                          "We'll send a 6-digit verification code to this mobile number.",
+                          style: GoogleFonts.poppins(
+                            color: Colors.white70,
+                            fontSize: 14,
+                            height: 1.5,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ),
 
-              const SizedBox(height: 30),
+                const SizedBox(height: 40),
 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    "Don't have an account?",
-                    style: TextStyle(color: Colors.white70),
-                  ),
-                  TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      "Register",
-                      style: TextStyle(
-                        color: Color(0xFF4CAF50),
+                SizedBox(
+                  width: double.infinity,
+                  height: 58,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      gradient: AppColors.primaryGradient,
+                      borderRadius: BorderRadius.circular(18),
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppColors.primary.withOpacity(.35),
+                          blurRadius: 18,
+                          offset: const Offset(0, 8),
+                        ),
+                      ],
+                    ),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, "/otp");
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.transparent,
+                        shadowColor: Colors.transparent,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18),
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Continue",
+                            style: GoogleFonts.poppins(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          const Icon(
+                            Icons.arrow_forward_rounded,
+                            color: Colors.white,
+                          ),
+                        ],
                       ),
                     ),
                   ),
-                ],
-              )
-            ],
+                ),
+
+                const SizedBox(height: 30),
+
+                Text(
+                  "By continuing, you agree to our",
+                  style: GoogleFonts.poppins(
+                    color: Colors.white54,
+                    fontSize: 13,
+                  ),
+                ),
+
+                const SizedBox(height: 5),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Terms",
+                        style: GoogleFonts.poppins(
+                          color: AppColors.secondary,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      "|",
+                      style: GoogleFonts.poppins(
+                        color: Colors.white38,
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Privacy Policy",
+                        style: GoogleFonts.poppins(
+                          color: AppColors.secondary,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+
+                const SizedBox(height: 35),
+              ],
+            ),
           ),
         ),
       ),

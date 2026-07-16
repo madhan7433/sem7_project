@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../constants/colors.dart';
 import '../screens/ai_chat_screen.dart';
 
 class QuickActions extends StatelessWidget {
@@ -19,14 +18,16 @@ class QuickActions extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
-          "⚡ Quick Actions",
+          "Quick Actions",
           style: TextStyle(
             color: Colors.white,
-            fontSize: 19,
+            fontSize: 28,
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(height: 18),
+
+        const SizedBox(height: 5),
+
         GridView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
@@ -34,56 +35,71 @@ class QuickActions extends StatelessWidget {
           gridDelegate:
               const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            crossAxisSpacing: 15,
-            mainAxisSpacing: 15,
+            crossAxisSpacing: 16,
+            mainAxisSpacing: 16,
             childAspectRatio: 1.12,
           ),
           itemBuilder: (context, index) {
             final item = actions[index];
 
             return InkWell(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(22),
               onTap: item.onTap,
               child: Container(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  color: AppColors.card,
-                  borderRadius: BorderRadius.circular(20),
+                  color: const Color(0xFF181818),
+                  borderRadius: BorderRadius.circular(22),
                   border: Border.all(
-                    color: AppColors.primary.withValues(alpha: 0.18),
+                    color: const Color(0xFF017422).withOpacity(.25),
                   ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(.25),
+                      blurRadius: 12,
+                      offset: const Offset(0, 6),
+                    ),
+                  ],
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      width: 52,
-                      height: 52,
-                      decoration: BoxDecoration(
-                        color: AppColors.primary.withValues(alpha: 0.15),
+                      width: 58,
+                      height: 58,
+                      decoration: const BoxDecoration(
+                        color: Color(0x22017422),
                         shape: BoxShape.circle,
                       ),
                       child: Icon(
                         item.icon,
-                        color: AppColors.primary,
-                        size: 26,
+                        color: const Color(0xFF017422),
+                        size: 30,
                       ),
                     ),
+
                     const Spacer(),
+
                     Text(
                       item.title,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
                         color: Colors.white,
+                        fontSize: 17,
                         fontWeight: FontWeight.bold,
-                        fontSize: 16,
                       ),
                     ),
+
                     const SizedBox(height: 4),
+
                     Text(
                       item.subtitle,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
-                        color: Colors.white60,
-                        fontSize: 12,
+                        color: Colors.white54,
+                        fontSize: 13,
                       ),
                     ),
                   ],
@@ -101,8 +117,8 @@ class QuickActions extends StatelessWidget {
   static List<_ActionItem> _farmerActions(BuildContext context) => [
         _ActionItem(
           icon: Icons.smart_toy_rounded,
-          title: "Ask FarmPilot AI",
-          subtitle: "AI farming assistant",
+          title: "AI Assistant",
+          subtitle: "Ask anything",
           onTap: () {
             Navigator.push(
               context,
@@ -112,11 +128,10 @@ class QuickActions extends StatelessWidget {
             );
           },
         ),
-
         _ActionItem(
-          icon: Icons.psychology_alt_rounded,
-          title: "Crop Advisor",
-          subtitle: "Smart recommendations",
+          icon: Icons.eco_rounded,
+          title: "Crop Care",
+          subtitle: "Smart advice",
           onTap: () {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
@@ -125,11 +140,10 @@ class QuickActions extends StatelessWidget {
             );
           },
         ),
-
         _ActionItem(
-          icon: Icons.trending_up_rounded,
-          title: "Market Trends",
-          subtitle: "Demand & pricing",
+          icon: Icons.show_chart_rounded,
+          title: "Market",
+          subtitle: "Live prices",
           onTap: () {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
@@ -138,11 +152,10 @@ class QuickActions extends StatelessWidget {
             );
           },
         ),
-
         _ActionItem(
           icon: Icons.agriculture_rounded,
           title: "Equipment",
-          subtitle: "Rent machinery",
+          subtitle: "Rent machines",
           onTap: () {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
@@ -159,7 +172,7 @@ class QuickActions extends StatelessWidget {
         _ActionItem(
           icon: Icons.shopping_cart_rounded,
           title: "Buy Crops",
-          subtitle: "Fresh products",
+          subtitle: "Fresh produce",
           onTap: () {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
@@ -168,11 +181,10 @@ class QuickActions extends StatelessWidget {
             );
           },
         ),
-
         _ActionItem(
           icon: Icons.favorite_rounded,
           title: "Wishlist",
-          subtitle: "Saved products",
+          subtitle: "Saved items",
           onTap: () {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
@@ -181,11 +193,10 @@ class QuickActions extends StatelessWidget {
             );
           },
         ),
-
         _ActionItem(
           icon: Icons.local_shipping_rounded,
           title: "Orders",
-          subtitle: "Track deliveries",
+          subtitle: "Track orders",
           onTap: () {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
@@ -194,11 +205,10 @@ class QuickActions extends StatelessWidget {
             );
           },
         ),
-
         _ActionItem(
           icon: Icons.bar_chart_rounded,
           title: "Price Trends",
-          subtitle: "Market analysis",
+          subtitle: "Market data",
           onTap: () {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(

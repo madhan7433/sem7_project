@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'screens/language_screen.dart';
+import 'screens/otp_screen.dart';
+import 'screens/splash_screen.dart';
 import 'screens/welcome_screen.dart';
 import 'screens/role_screen.dart';
 import 'screens/login_screen.dart';
@@ -25,13 +28,15 @@ class FarmDirectApp extends StatelessWidget {
       ),
 
       // First screen
-      home: const BottomNavScreen(),
+      home: const SplashScreen(),
 
       // Named routes
       routes: {
   '/role': (context) => const RoleScreen(),
   '/login': (context) => const LoginScreen(),
   '/home': (context) => const Placeholder(),
+  '/language': (context) => const LanguageScreen(),
+  "/otp": (context) => const OtpScreen(),
 },
     );
   }

@@ -1,116 +1,120 @@
 import 'package:flutter/material.dart';
 
+import '../constants/colors.dart';
+
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF121212),
-      body: SafeArea(
-        child: Stack(
-          children: [
-            /// Bottom Farming Illustration
-            Positioned(
-              bottom: -30,
-              left: 0,
-              right: 0,
-              child: Opacity(
-                opacity: 0.95,
-                child: Image.asset(
-                  'assets/images/farming.png',
-                  height: 300,
-                  fit: BoxFit.contain,
-                ),
+      body: Stack(
+        children: [
+
+          /// Background Image
+          Positioned.fill(
+            child: Image.asset(
+              "assets/images/welcome_bg.png",
+              fit: BoxFit.cover,
+            ),
+          ),
+
+          /// Dark overlay for readability
+          Positioned.fill(
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.black.withOpacity(.18),
               ),
             ),
+          ),
 
-            /// Main Content
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 28),
               child: Column(
                 children: [
+
                   const Spacer(),
 
-                  /// App Logo
-                  Container(
-                    height: 120,
-                    width: 120,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF4CAF50).withOpacity(0.15),
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Icon(
-                      Icons.agriculture,
-                      size: 70,
-                      color: Color(0xFF4CAF50),
-                    ),
-                  ),
-
-                  const SizedBox(height: 25),
-
-                  /// App Name
                   const Text(
-                    "FarmDirect",
+                    "VIDHAI",
                     style: TextStyle(
-                      fontSize: 36,
+                      fontSize: 40,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF4CAF50),
-                      letterSpacing: 1,
+                      color: Colors.white,
+                      letterSpacing: 5,
                     ),
                   ),
 
                   const SizedBox(height: 12),
 
-                  /// Subtitle
                   const Text(
-                    "Connecting Farmers Directly to Buyers\nfor Better Profits",
-                    textAlign: TextAlign.center,
+                    "From Seed to Success",
                     style: TextStyle(
-                      fontSize: 17,
-                      color: Colors.white70,
-                      height: 1.5,
+                      color: AppColors.secondary,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
 
-                  const SizedBox(height: 45),
+                  const SizedBox(height: 28),
+
 
                   /// Get Started Button
-                  SizedBox(
+                  Container(
                     width: double.infinity,
-                    height: 56,
+                    height: 58,
+                    decoration: BoxDecoration(
+                      gradient: AppColors.primaryGradient,
+                      borderRadius: BorderRadius.circular(18),
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppColors.primary.withOpacity(.4),
+                          blurRadius: 20,
+                          offset: const Offset(0, 8),
+                        ),
+                      ],
+                    ),
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, '/role');
+                        Navigator.pushNamed(context, "/language");
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF4CAF50),
-                        elevation: 8,
-                        shadowColor: Colors.green,
+                        backgroundColor: Colors.transparent,
+                        shadowColor: Colors.transparent,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: BorderRadius.circular(18),
                         ),
                       ),
-                      child: const Text(
-                        "Get Started",
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Get Started",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(width: 8),
+                          Icon(
+                            Icons.arrow_forward_rounded,
+                            color: Colors.white,
+                          ),
+                        ],
                       ),
                     ),
                   ),
 
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 28),
 
-                  /// Login
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/login');
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, "/login");
                     },
-                    child: RichText(
-                      text: const TextSpan(
+                    child: const Text.rich(
+                      TextSpan(
                         text: "Already have an account? ",
                         style: TextStyle(
                           color: Colors.white70,
@@ -120,7 +124,7 @@ class WelcomeScreen extends StatelessWidget {
                           TextSpan(
                             text: "Login",
                             style: TextStyle(
-                              color: Color(0xFF4CAF50),
+                              color: AppColors.secondary,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -129,12 +133,12 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                   ),
 
-                  const SizedBox(height: 170),
+                  const SizedBox(height: 250),
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
