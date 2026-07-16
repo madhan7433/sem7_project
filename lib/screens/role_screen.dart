@@ -106,10 +106,16 @@ class _RoleScreenState extends State<RoleScreen> {
                     ),
                     child: ElevatedButton(
                       onPressed: selectedRole == -1
-                          ? null
-                          : () {
-                              Navigator.pushNamed(context, "/login");
-                            },
+    ? null
+    : () {
+        if (selectedRole == 0) {
+          // Farmer
+          Navigator.pushNamed(context, "/login");
+        } else {
+          // Buyer
+          Navigator.pushNamed(context, "/buyer-login");
+        }
+      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.transparent,
                         shadowColor: Colors.transparent,

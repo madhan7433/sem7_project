@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../constants/colors.dart';
+import '../widgets/farmer_bottom_nav.dart';
 import 'home_screen.dart';
 
 class OtpScreen extends StatefulWidget {
@@ -17,11 +18,11 @@ class _OtpScreenState extends State<OtpScreen> {
   void verifyOtp() {
     if (otpController.text.trim() == "123456") {
       Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (_) => HomeScreen(),
-        ),
-      );
+  context,
+  MaterialPageRoute(
+    builder: (_) => const FarmerBottomNav(),
+  ),
+);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(

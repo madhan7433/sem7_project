@@ -7,6 +7,10 @@ import 'screens/role_screen.dart';
 import 'screens/login_screen.dart';
 import 'screens/home_screen.dart';
 import 'navigation/bottom_nav_screen.dart';
+import 'screens/buyer_login_screen.dart';
+import 'screens/buyer_login_screen.dart';
+
+import 'screens/buyer_home_screen.dart';
 
 void main() {
   runApp(const FarmDirectApp());
@@ -37,6 +41,9 @@ class FarmDirectApp extends StatelessWidget {
   '/home': (context) => const Placeholder(),
   '/language': (context) => const LanguageScreen(),
   "/otp": (context) => const OtpScreen(),
+  '/buyer-login': (context) => const BuyerLoginScreen(),
+
+'/buyer-home': (context) => const BuyerHomeScreen(),
 },
     );
   }
